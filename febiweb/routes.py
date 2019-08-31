@@ -19,7 +19,9 @@ def loadProductImages():
         if os.path.isdir(assetItemPath):
             productDirs.append(assetItemPath)
     productPaths = []
+    productDirs = sorted(productDirs)
     for x, prodDir in enumerate(productDirs):
         prodname = 'product' + str(x+1)
-        productPaths.append([os.path.join('..', 'static', 'assets', prodname, productImage) for productImage in os.listdir(prodDir)])
+        pathsThisProduct = [os.path.join('..', 'static', 'assets', prodname, productImage) for productImage in os.listdir(prodDir)]
+        productPaths.append(pathsThisProduct)
     return productPaths
