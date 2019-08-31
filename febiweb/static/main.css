@@ -1,0 +1,118 @@
+body {
+    background: #fafafa;
+    color: #333333;
+
+}
+
+
+.bg-steel {
+    background-color: #5f788a;
+}
+
+.header {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.headercont {
+    background-color: #5f788a;
+}
+
+.content {
+    width: 1000px;
+    margin: 0 auto;
+
+}
+
+.mainimage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.thumbimage {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 150px;
+    padding: 3px;
+}
+.payment {
+    float: right;
+    margin: auto;
+    text-align: center;
+
+    /* border:1px solid black; */
+
+}
+
+.price{
+    margin: auto;
+    font-size: 22pt;
+    /* border:1px solid black; */
+
+}
+
+.choicerow {
+    height: 150px;
+    /* border:1px solid black; */
+}
+.choiceblock {
+    height: 150px;
+    float: left;
+    /* border:1px solid black; */
+}
+
+.arrowcontainer {
+    float: right;
+    height: 100%;
+    /* border:1px solid black; */
+}
+
+.rightarrow {
+    height: 80px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.contact {
+    font-family: Georgia;
+    float: right;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.contactdetail {
+    padding: 12px;
+    height: 100%;
+    background-color: #5f788a;
+    font-size: 30pt;
+}
+
+.subheader {
+    width: 100%;
+    background-color: #5f788a;
+    text-align: center;
+    font-size: 35pt;
+    font-family: Georgia;
+}
+
+.site-logo {
+    height: 95px;
+    width: 95px;
+    margin-right: 16px;
+}
+
+.description-banner{
+    
+    width: 1000px;
+    margin: 0 auto;
+
+}
+.site-name{
+
+}

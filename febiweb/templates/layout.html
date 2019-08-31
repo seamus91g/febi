@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    <title>FEBI</title>
+
+</head>
+
+<body>
+    <header class="bg-steel">
+        <nav class="header">
+            <div class="headercont">
+                <img class="site-logo" src="{{ url_for('static', filename='assets/logo-large-trans.png') }}">
+                <div class="contact">
+                    <span class="contactdetail">Call now </span>
+                    <span class="contactdetail">087 1234567</span>
+                </div>
+
+            </div>
+            <div class="subheader">
+                <p class="site-name">FREESTANDING EXERCISE BARS IRELAND</p>
+            </div>
+        </nav>
+    </header>
+    <div  class="description-banner">
+        <img class="description-banner" src="{{ url_for('static', filename='assets/Picture8.png') }}">
+
+    </div>
+
+
+    {% block content %}{% endblock %}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script> -->
+
+    <script>
+        const mainImgs = document.getElementsByClassName("mainimage")
+        const rightArrows = document.getElementsByClassName("rightarrow")
+
+        // Set main image 1
+        mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-2.png') }}"
+        // Set main image 2
+        mainImgs[1].src = "{{ url_for('static', filename='assets/product2/1.png') }}"
+        // Set main image 3
+        mainImgs[2].src = "{{ url_for('static', filename='assets/product3/a.png') }}"
+
+        let startIndex = [0, 0, 0]
+        for (var i=0; i<mainImgs.length; i++){
+            setImages(startIndex[i], i, mainImgs[i])
+
+        }
+        for (var i=0; i<rightArrows.length; i++){
+            rightArrows[i].addEventListener('click', rotateImages)
+            rightArrows[i].imageIndex = i
+        }
+
+        function setImages(start, productIndex, mainim) {
+            maxImages = 6
+            allims = {{ productImages | tojson }}
+            febImages = {{ productImages[0] | tojson }};
+            febImages = allims[productIndex]
+            
+            imgRow = elemByIndex(productIndex, "choiceblock")
+            let febiImg;
+            for (let step = start; step < start + maxImages; step++) {
+                imgIndex = step % febImages.length
+                febiImg = document.createElement('img');
+                febiImg.className = "thumbimage"
+                febiImg.src = febImages[imgIndex]
+                imgRow.appendChild(febiImg)
+                febiImg.addEventListener('click', setImageMain)
+                febiImg.thismainimg = mainim
+            }
+        }
+
+        function setImageMain(evt) {
+            evt.target.thismainimg.src = evt.target.currentSrc
+
+        }
+
+        function elemByIndex(indx, clsName){
+            choiceBlocks = document.getElementsByClassName(clsName);
+            return choiceBlocks[indx]
+        }
+
+        function rotateImages(evt) {
+            imgindx = evt.target.imageIndex
+            startIndex[imgindx] = startIndex[imgindx] + 1
+            imgRow = elemByIndex(imgindx, "choiceblock")
+            {# imgRow = document.getElementsByClassName("choiceblock"); #}
+            while (imgRow.firstChild) {
+                imgRow.removeChild(imgRow.firstChild);
+            }
+
+            setImages(startIndex[imgindx], imgindx, mainImgs[imgindx])
+        }
+    </script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'demo_sandbox_client_id',
+                production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+            },
+
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
+
+            // Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: '0.01',
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            // Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    // Show a confirmation message to the buyer
+                    window.alert('Thank you for your purchase!');
+                });
+            }
+        }, '#paypal-button1');
+        
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'demo_sandbox_client_id',
+                production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+            },
+
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
+
+            // Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: '0.01',
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            // Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    // Show a confirmation message to the buyer
+                    window.alert('Thank you for your purchase!');
+                });
+            }
+        }, '#paypal-button2');
+        
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'demo_sandbox_client_id',
+                production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+            },
+
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
+
+            // Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: '0.01',
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            // Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    // Show a confirmation message to the buyer
+                    window.alert('Thank you for your purchase!');
+                });
+            }
+        }, '#paypal-button3');
+    </script>
+
+</body>
+
+</html>
