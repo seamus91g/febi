@@ -6,6 +6,7 @@ from flask import render_template, request, url_for
 
 @app.route("/")
 @app.route("/home")
+@app.route("/index")
 def home():
     return render_template('home.html', productImages=loadProductImages())
 
