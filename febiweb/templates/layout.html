@@ -17,28 +17,211 @@
 </head>
 
 <body>
-    <header class="bg-steel">
+    {# <header class="bg-steel">
         <nav class="header">
             <div class="headercont">
-                <img class="site-logo" src="{{ url_for('static', filename='assets/logo-large-trans.png') }}">
                 <div class="contact">
-                    <span class="contactdetail">Call now </span>
-                    <span class="contactdetail">087 1234567</span>
+                    <div class="contactwrapperwidth">
+                        <div class="contactwrapper">
+                            <div class="contactdetail">Call now </div>
+                            <div class="contactdetail">087 1234567 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-strip">
+                    <div class="header-strip-content">
+                        <div class="logo-circle-outer">
+                        </div>
+
+                            <div class="logo-circle">
+                                <img class="site-logo" src="{{ url_for('static', filename='assets/derpthe.png') }}">
+                            </div>
+                        <div class="subheader">
+                            <p class="site-name">FREESTANDING EXERCISE BARS IRELAND</p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-            <div class="subheader">
-                <p class="site-name">FREESTANDING EXERCISE BARS IRELAND</p>
-            </div>
         </nav>
     </header>
-    <div  class="description-banner">
-        <img class="description-banner" src="{{ url_for('static', filename='assets/Picture8.png') }}">
+    <div  class="subbannerdiv">
+        <img class="description-banner" src="{{ url_for('static', filename='assets/Picture8b.png') }}">
 
+    </div> #}
+
+
+    <header class="">
+        <div class="seriously">
+            <div class="header-space-left">
+                <p class="srs2">
+                
+                </p>
+            </div>
+            <div class="header-tophalf">
+            
+                <div class="header-toprow">
+                    <div class="call-now">Call now </div>
+                    <div class="call-now">087 1234567 </div>
+                </div>
+                <div class="header-titlerow">
+                    <div class="titlerow-positioner">
+                    </div>
+                    <div class="logo-background">
+                        <div class="logo-positioner">
+                        </div>
+                        <div class="logo-frame"> 
+                        </div>
+                        <div> 
+                        </div>
+                        <img class="febi-logo" src="{{ url_for('static', filename='assets/derpthe.png') }}">
+                    </div>
+
+                    <p class="site-name"> FREESTANDING EXERCISE BARS IRELAND</p>
+                </div>
+                
+            </div>
+            <div class="header-space-right">
+                <p class="srs2">
+                
+                </p>
+            </div>
+        </div>
+
+        <div class="header-bannerrow">
+            <img class="lower-header-banner" src="{{ url_for('static', filename='assets/Picture8b.png') }}">
+
+        </div>
+    </header>
+
+    <div class="body-column">
+        <div class="product-container">
+            <img class="product-main-img" src="{{ url_for('static', filename='assets/product1/1-2.png') }}" />
+
+            <div class="scroll-thumbnail">
+                {# This gets populated in Javascript #}
+            </div>
+
+            <div class="product-body">
+                <div class="product-description">
+                
+                    <h1>Mega Family Exercise Bars</h1>
+                    <p>
+                        The Mega Family Exercise Bars provides all you could ever need to keep the whole family entertained.
+                    </p>
+                    <ul>
+                        <li>
+                            Dual monkey bars - inclined and level
+                        </li>
+                        <li>
+                            Dip station
+                        </li>
+                        <li>
+                            Pull up bar
+                        </li>
+                        <li>
+                            Flying pull up station
+                        </li>
+                        <li>
+                            Climbing ladder
+                        </li>
+                    </ul>
+                    <p>
+                        Perfect for even the biggest kids!
+                        Endless opportunities to attach many exciting add-ons - swings, gymnastic rings, boxing bag, speed
+                        ball, trapeze bar, climbing rope, rope ladder, climbing mesh, etc.
+                        </br>
+                        Attachments sold separately.
+                    </p>
+
+                </div>
+                <div class="product-buy">
+
+                    <h2>Buy now</h2>
+                    <div class="buy-now-spacer">
+                    </div>
+                    <div>
+                    sup
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    {% block content %}{% endblock %}
+
+{#  #}
+{#  #}
+{# bottom contact banner #}
+
+<div class="end-banner">
+    {# <div> #}
+    <img class="enb-banner-img" src="{{ url_for('static', filename='assets/product1/1-2.png') }}" />
+    <div class="end-banner-info">
+        Contact FEBI on 087 1234567 or email something@febi.ie
+    </div>
+    <img class="enb-banner-img" src="{{ url_for('static', filename='assets/product1/1-2.png') }}" />
+
+</div>
+
+{# footer #}
+
+
+<footer>
+
+
+    <div class="footer-topics">
+        <div class="footer-products">
+            </br>
+            k
+            </br>
+            kehrereqio hwriar iaebrkjsaldbfklsak
+            kehrereqio hwriar ia
+            </br>
+            k
+            </br>
+            k
+            
+        </div>
+        <div class="footer-contact">
+            </br>
+            kehrereqio hwriar iaebrkjsaldbfklsak
+            </br>
+            k
+            </br>
+            k
+
+        </div>
+    </div>
+
+    </hr>
+    <div class="copyright-statement">
+        (c) 2019 Freestanding
+    </div>
+
+</footer>
+
+{#  #}
+{#  #}
+{#  #}
+{#  #}
+{#  #}
+{#  #}
+{#  #}
+{#  #}
+{#  #}
+{#  #}
+    <div style="height: 200px">
     </div>
 
 
-    {% block content %}{% endblock %}
+    {# <div  class="subbannerdiv">
+        <img class="description-banner" src="{{ url_for('static', filename='assets/Picture8b.png') }}">
+
+    </div> #}
+
 
 
     <!-- Optional JavaScript -->
@@ -52,186 +235,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script> -->
-
     <script>
-        const mainImgs = document.getElementsByClassName("mainimage")
-        const rightArrows = document.getElementsByClassName("rightarrow")
+        allims = {{ productImages | tojson }}
+        const mainImgs = document.getElementsByClassName("product-main-img")
 
         // Set main image 1
-        mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-2.png') }}"
+        mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-1.png') }}"
         // Set main image 2
-        mainImgs[1].src = "{{ url_for('static', filename='assets/product2/1.png') }}"
+        // mainImgs[1].src = "{{ url_for('static', filename='assets/product2/1.png') }}"
         // Set main image 3
-        mainImgs[2].src = "{{ url_for('static', filename='assets/product3/a.png') }}"
+        // mainImgs[2].src = "{{ url_for('static', filename='assets/product3/a.png') }}"
 
-        let startIndex = [0, 0, 0]
-        for (var i=0; i<mainImgs.length; i++){
-            setImages(startIndex[i], i, mainImgs[i])
-
-        }
-        for (var i=0; i<rightArrows.length; i++){
-            rightArrows[i].addEventListener('click', rotateImages)
-            rightArrows[i].imageIndex = i
-        }
-
-        function setImages(start, productIndex, mainim) {
-            maxImages = 6
-            allims = {{ productImages | tojson }}
-            febImages = {{ productImages[0] | tojson }};
-            febImages = allims[productIndex]
-            
-            imgRow = elemByIndex(productIndex, "choiceblock")
-            let febiImg;
-            for (let step = start; step < start + maxImages; step++) {
-                imgIndex = step % febImages.length
-                febiImg = document.createElement('img');
-                febiImg.className = "thumbimage"
-                febiImg.src = febImages[imgIndex]
-                imgRow.appendChild(febiImg)
-                febiImg.addEventListener('click', setImageMain)
-                febiImg.thismainimg = mainim
-            }
-        }
-
-        function setImageMain(evt) {
-            evt.target.thismainimg.src = evt.target.currentSrc
-
-        }
-
-        function elemByIndex(indx, clsName){
-            choiceBlocks = document.getElementsByClassName(clsName);
-            return choiceBlocks[indx]
-        }
-
-        function rotateImages(evt) {
-            imgindx = evt.target.imageIndex
-            startIndex[imgindx] = startIndex[imgindx] + 1
-            imgRow = elemByIndex(imgindx, "choiceblock")
-            {# imgRow = document.getElementsByClassName("choiceblock"); #}
-            while (imgRow.firstChild) {
-                imgRow.removeChild(imgRow.firstChild);
-            }
-
-            setImages(startIndex[imgindx], imgindx, mainImgs[imgindx])
-        }
     </script>
-    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <script>
-        paypal.Button.render({
-            // Configure environment
-            env: 'sandbox',
-            client: {
-                sandbox: 'demo_sandbox_client_id',
-                production: 'demo_production_client_id'
-            },
-            // Customize button (optional)
-            locale: 'en_US',
-            style: {
-                size: 'small',
-                color: 'gold',
-                shape: 'pill',
-            },
+    <script src="{{ url_for('static', filename='js/main-page.js') }}">
 
-            // Enable Pay Now checkout flow (optional)
-            commit: true,
-
-            // Set up a payment
-            payment: function (data, actions) {
-                return actions.payment.create({
-                    transactions: [{
-                        amount: {
-                            total: '0.01',
-                            currency: 'USD'
-                        }
-                    }]
-                });
-            },
-            // Execute the payment
-            onAuthorize: function (data, actions) {
-                return actions.payment.execute().then(function () {
-                    // Show a confirmation message to the buyer
-                    window.alert('Thank you for your purchase!');
-                });
-            }
-        }, '#paypal-button1');
-        
-        paypal.Button.render({
-            // Configure environment
-            env: 'sandbox',
-            client: {
-                sandbox: 'demo_sandbox_client_id',
-                production: 'demo_production_client_id'
-            },
-            // Customize button (optional)
-            locale: 'en_US',
-            style: {
-                size: 'small',
-                color: 'gold',
-                shape: 'pill',
-            },
-
-            // Enable Pay Now checkout flow (optional)
-            commit: true,
-
-            // Set up a payment
-            payment: function (data, actions) {
-                return actions.payment.create({
-                    transactions: [{
-                        amount: {
-                            total: '0.01',
-                            currency: 'USD'
-                        }
-                    }]
-                });
-            },
-            // Execute the payment
-            onAuthorize: function (data, actions) {
-                return actions.payment.execute().then(function () {
-                    // Show a confirmation message to the buyer
-                    window.alert('Thank you for your purchase!');
-                });
-            }
-        }, '#paypal-button2');
-        
-        paypal.Button.render({
-            // Configure environment
-            env: 'sandbox',
-            client: {
-                sandbox: 'demo_sandbox_client_id',
-                production: 'demo_production_client_id'
-            },
-            // Customize button (optional)
-            locale: 'en_US',
-            style: {
-                size: 'small',
-                color: 'gold',
-                shape: 'pill',
-            },
-
-            // Enable Pay Now checkout flow (optional)
-            commit: true,
-
-            // Set up a payment
-            payment: function (data, actions) {
-                return actions.payment.create({
-                    transactions: [{
-                        amount: {
-                            total: '0.01',
-                            currency: 'USD'
-                        }
-                    }]
-                });
-            },
-            // Execute the payment
-            onAuthorize: function (data, actions) {
-                return actions.payment.execute().then(function () {
-                    // Show a confirmation message to the buyer
-                    window.alert('Thank you for your purchase!');
-                });
-            }
-        }, '#paypal-button3');
     </script>
-
 </body>
 
 </html>
