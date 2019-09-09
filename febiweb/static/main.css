@@ -412,7 +412,7 @@ hr {
 .body-column{
     display: flex;
     width: 100%;
-    
+    flex-direction: column;
     /* justify-content: space-around; */
     align-items: center;
     /* position: relative; */

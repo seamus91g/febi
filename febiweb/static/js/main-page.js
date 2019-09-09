@@ -2,9 +2,19 @@
         // const rightArrows = document.getElementsByClassName("rightarrow")
 
         // let startIndex = [0, 0, 0]
-        let startIndex = [0]
+        let startIndex = [0, 0]
         for (var i=0; i<mainImgs.length; i++){
+
+            // Set the thumbnails
             setImages(startIndex[i], i, mainImgs[i])
+            
+            // The img tag for the main image has a click listener. 
+            // This is independent of what img src is in the img tag
+            mainImgs[i].addEventListener('click', clickPrevNext)
+            // Store the index so we know what image is next/previous
+            mainImgs[i].imageIndx = 0
+            // Which product number is this
+            mainImgs[i].prodIndx = i
 
         }
         // for (var i=0; i<rightArrows.length; i++){
@@ -33,13 +43,6 @@
             }
         }
 
-        // The img tag for the main image has a click listener. 
-        // This is independent of what img src is in the img tag
-        mainImgs[0].addEventListener('click', clickPrevNext)
-        // Store the index so we know what image is next/previous
-        mainImgs[0].imageIndx = 0
-        // Which product number is this
-        mainImgs[0].prodIndx = 0
 
         function setImageMain(evt) {
             // Set the source of the clicked image to be the source of the main image

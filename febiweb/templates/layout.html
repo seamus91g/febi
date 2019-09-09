@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
@@ -95,62 +95,8 @@
     </header>
 
     <div class="body-column">
-        <div class="product-container">
-            <img class="product-main-img" src="{{ url_for('static', filename='assets/product1/1-2.png') }}" />
-
-            <div class="scroll-thumbnail">
-                {# This gets populated in Javascript #}
-            </div>
-
-            <div class="product-body">
-                <div class="product-description">
-                
-                    <h1>Mega Family Exercise Bars</h1>
-                    <p>
-                        The Mega Family Exercise Bars provides all you could ever need to keep the whole family entertained.
-                    </p>
-                    <ul>
-                        <li>
-                            Dual monkey bars - inclined and level
-                        </li>
-                        <li>
-                            Dip station
-                        </li>
-                        <li>
-                            Pull up bar
-                        </li>
-                        <li>
-                            Flying pull up station
-                        </li>
-                        <li>
-                            Climbing ladder
-                        </li>
-                    </ul>
-                    <p>
-                        Perfect for even the biggest kids!
-                        Endless opportunities to attach many exciting add-ons - swings, gymnastic rings, boxing bag, speed
-                        ball, trapeze bar, climbing rope, rope ladder, climbing mesh, etc.
-                        </br>
-                        Attachments sold separately.
-                    </p>
-
-                </div>
-                <div class="product-buy">
-
-                    <h2>Buy now</h2>
-                    <div class="buy-now-spacer">
-                    </div>
-                    <div>
-                    sup
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
+        {% block content %}{% endblock %}
     </div>
-    {% block content %}{% endblock %}
 
 {#  #}
 {#  #}
@@ -203,25 +149,15 @@
 
 </footer>
 
-{#  #}
-{#  #}
-{#  #}
-{#  #}
-{#  #}
-{#  #}
-{#  #}
-{#  #}
-{#  #}
-{#  #}
+
+
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
     <div style="height: 200px">
     </div>
-
-
-    {# <div  class="subbannerdiv">
-        <img class="description-banner" src="{{ url_for('static', filename='assets/Picture8b.png') }}">
-
-    </div> #}
-
 
 
     <!-- Optional JavaScript -->
@@ -242,7 +178,7 @@
         // Set main image 1
         mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-1.png') }}"
         // Set main image 2
-        // mainImgs[1].src = "{{ url_for('static', filename='assets/product2/1.png') }}"
+        mainImgs[1].src = "{{ url_for('static', filename='assets/product2/1.png') }}"
         // Set main image 3
         // mainImgs[2].src = "{{ url_for('static', filename='assets/product3/a.png') }}"
 
