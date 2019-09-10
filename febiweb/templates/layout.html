@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    {# <header class="bg-steel">
+    <!-- <header class="bg-steel">
         <nav class="header">
             <div class="headercont">
                 <div class="contact">
@@ -48,7 +48,7 @@
     <div  class="subbannerdiv">
         <img class="description-banner" src="{{ url_for('static', filename='assets/Picture8b.png') }}">
 
-    </div> #}
+    </div>  -->
 
 
     <header class="">
@@ -61,8 +61,12 @@
             <div class="header-tophalf">
             
                 <div class="header-toprow">
-                    <div class="call-now">Call now </div>
-                    <div class="call-now">087 1234567 </div>
+                    <div class="header-contact">
+                        <img class="contact-icon" src="{{ url_for('static', filename='assets/phone-icon.png') }}"></img>
+                        <div class="call-now">087 1234 567</div>
+                        <img class="contact-icon" src="{{ url_for('static', filename='assets/email-icon.png') }}"></img>
+                        <div class="call-now">febi@febi.ie </div>
+                    </div>
                 </div>
                 <div class="header-titlerow">
                     <div class="titlerow-positioner">
@@ -70,14 +74,22 @@
                     <div class="logo-background">
                         <div class="logo-positioner">
                         </div>
-                        <div class="logo-frame"> 
+                        <div class="logo-frame-bottom"> 
+                        </div>
+                        
+                        <div class="logo-frame-top"> 
                         </div>
                         <div> 
                         </div>
                         <img class="febi-logo" src="{{ url_for('static', filename='assets/derpthe.png') }}">
                     </div>
 
-                    <p class="site-name"> FREESTANDING EXERCISE BARS IRELAND</p>
+                    <div class="site-name"> 
+                        <h1>
+                            FREESTANDING EXERCISE BARS IRELAND
+
+                        </h1>
+                    </div>
                 </div>
                 
             </div>
@@ -104,47 +116,53 @@
 
 <div class="end-banner">
     {# <div> #}
-    <img class="enb-banner-img" src="{{ url_for('static', filename='assets/product1/1-2.png') }}" />
+    <img class="enb-banner-img" src="{{ url_for('static', filename='assets/small-banner-man.png') }}" />
     <div class="end-banner-info">
         Contact FEBI on 087 1234567 or email something@febi.ie
     </div>
-    <img class="enb-banner-img" src="{{ url_for('static', filename='assets/product1/1-2.png') }}" />
+    <img class="enb-banner-img" src="{{ url_for('static', filename='assets/small-banner-man.png') }}" />
 
 </div>
 
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
 {# footer #}
 
 
 <footer>
 
-
     <div class="footer-topics">
         <div class="footer-products">
-            </br>
-            k
-            </br>
-            kehrereqio hwriar iaebrkjsaldbfklsak
-            kehrereqio hwriar ia
-            </br>
-            k
-            </br>
-            k
             
+                <h3>Products</h3>
+                <lu>
+                    <li>Zig-Zag</li>
+                    <li>Family</li>
+                    <li>Family</li>
+                </lu>
+    
         </div>
         <div class="footer-contact">
-            </br>
-            kehrereqio hwriar iaebrkjsaldbfklsak
-            </br>
-            k
-            </br>
-            k
+            
+                <h3>Contact</h3>
+                <lu>
+                    <li>tel: 087 1234 567</li>
+                    <li>email: febi@febi.ie</li>
+                    <li>Facebook: www.facebook.com</li>
+                    <li>Instagram: www.instagram.com</li>
+                </lu>
 
         </div>
     </div>
 
-    </hr>
     <div class="copyright-statement">
-        (c) 2019 Freestanding
+        <p>
+            
+            (c) 2019 Freestanding Exercise Bars Ireland
+        </p>
     </div>
 
 </footer>
@@ -160,17 +178,6 @@
     </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script> -->
     <script>
         allims = {{ productImages | tojson }}
         const mainImgs = document.getElementsByClassName("product-main-img")
@@ -184,7 +191,10 @@
 
     </script>
     <script src="{{ url_for('static', filename='js/main-page.js') }}">
-
+    </script>
+    
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script src="{{ url_for('static', filename='js/paypal-info.js') }}">
     </script>
 </body>
 
