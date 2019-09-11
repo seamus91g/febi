@@ -3,6 +3,13 @@
 
         folderSizes = ['120', '240', '360', '480', '600', '720', '840', '960']
 
+        
+        // mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-1.png') }}"
+        pageWidth = getWidth()
+        mainImgs[0].src = whichImageForSize(mainImPath1, pageWidth)
+        mainImgs[1].src = whichImageForSize(mainImPath2, pageWidth)
+        console.log("Main im is set to: ", mainImgs[0].src)
+
         // let startIndex = [0, 0, 0]
         let startIndex = [0, 0]
         for (var i=0; i<mainImgs.length; i++){

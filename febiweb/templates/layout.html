@@ -150,12 +150,29 @@
         console.log(allims)
         const mainImgs = document.getElementsByClassName("product-main-img")
 
+        // pageWidth = getWidth()
+
+        
         // Set main image 1
-        mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-1.png') }}"
+        mainImPath1 = "{{ url_for('static', filename='assets/product1/1-1.png') }}"
+        // mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-1.png') }}"
         // Set main image 2
-        mainImgs[1].src = "{{ url_for('static', filename='assets/product2/1.png') }}"
+        mainImPath2 = "{{ url_for('static', filename='assets/product2/1.png') }}"
+        // mainImgs[1].src = "{{ url_for('static', filename='assets/product2/1.png') }}"
         // Set main image 3
         // mainImgs[2].src = "{{ url_for('static', filename='assets/product3/a.png') }}"
+
+        
+        // function getWidth() {
+        //     return Math.max(
+        //       document.body.scrollWidth,
+        //       document.documentElement.scrollWidth,
+        //       document.body.offsetWidth,
+        //       document.documentElement.offsetWidth,
+        //       document.documentElement.clientWidth
+        //     );
+        //   }
+
 
     </script>
     <script src="{{ url_for('static', filename='js/main-page.js') }}">
