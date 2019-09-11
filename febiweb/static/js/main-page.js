@@ -9,6 +9,7 @@
         mainImgs[0].src = whichImageForSize(mainImPath1, pageWidth)
         mainImgs[1].src = whichImageForSize(mainImPath2, pageWidth)
         console.log("Main im is set to: ", mainImgs[0].src)
+        console.log("Main im 2 is set to: ", mainImgs[1].src)
 
         // let startIndex = [0, 0, 0]
         let startIndex = [0, 0]
@@ -108,9 +109,9 @@
             choosenSize = null;
             console.log("Fetching im for size: ", imWidth)
             for (let i=0; i<folderSizes.length; i++){
-                console.log("wafsgasFetching im for size: ", imWidth)
+                // console.log("wafsgasFetching im for size: ", imWidth)
                 thisSize = parseInt(folderSizes[i])
-                console.log("Checking x,y: ", thisSize, " ", imWidth)
+                // console.log("Checking x,y: ", thisSize, " ", imWidth)
                 if (thisSize > imWidth){
                 
                     // TODO: Different file systems have forward slash
@@ -119,21 +120,21 @@
                         res = path.split("/");
                     }
                     filename = res.pop()
-                    console.log('Loading file: ', res)
+                    // console.log('Loading file: ', res)
                     res.push(folderSizes[i])
-                    console.log('Loading file: ', res)
+                    // console.log('Loading file: ', res)
                     res.push(filename)
-                    console.log('Loading file: ', res)
+                    // console.log('Loading file: ', res)
                     res = makeRelPath(res)
-                    console.log('LRel path: ', res)
+                    // console.log('LRel path: ', res)
                     res = pathJoin(res, '/');   // TODO: should be backslash?? 
-                    console.log('Loading file: ', res)
+                    // console.log('Loading file: ', res)
                     // if(res.exists()){
                     //     print("Exists!")
                     // } else {
                     //     print("Nada on the exists")
                     // }
-                    console.log("Decided on ", res, ", size: ", folderSizes[i])
+                    // console.log("Decided on ", res, ", size: ", folderSizes[i])
                     return res
                 }
             }
