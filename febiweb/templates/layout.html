@@ -17,41 +17,9 @@
 </head>
 
 <body>
-    <!-- <header class="bg-steel">
-        <nav class="header">
-            <div class="headercont">
-                <div class="contact">
-                    <div class="contactwrapperwidth">
-                        <div class="contactwrapper">
-                            <div class="contactdetail">Call now </div>
-                            <div class="contactdetail">087 1234567 </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="banner-strip">
-                    <div class="header-strip-content">
-                        <div class="logo-circle-outer">
-                        </div>
-
-                            <div class="logo-circle">
-                                <img class="site-logo" src="{{ url_for('static', filename='assets/derpthe.png') }}">
-                            </div>
-                        <div class="subheader">
-                            <p class="site-name">FREESTANDING EXERCISE BARS IRELAND</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </nav>
-    </header>
-    <div  class="subbannerdiv">
-        <img class="description-banner" src="{{ url_for('static', filename='assets/Picture8b.png') }}">
-
-    </div>  -->
 
 
-    <header class="">
+    <header>
         <div class="seriously">
             <div class="header-space-left">
                 <p class="srs2">
@@ -141,7 +109,7 @@
                 <lu>
                     <li>Zig-Zag</li>
                     <li>Family</li>
-                    <li>Family</li>
+                    <li>Blah blah</li>
                 </lu>
     
         </div>
@@ -160,7 +128,6 @@
 
     <div class="copyright-statement">
         <p>
-            
             (c) 2019 Freestanding Exercise Bars Ireland
         </p>
     </div>
@@ -174,12 +141,13 @@
 <!--  -->
 <!--  -->
 <!--  -->
-    <div style="height: 200px">
-    </div>
+    <!-- <div style="height: 200px">
+    </div> -->
 
 
     <script>
         allims = {{ productImages | tojson }}
+        console.log(allims)
         const mainImgs = document.getElementsByClassName("product-main-img")
 
         // Set main image 1
