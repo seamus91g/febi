@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,16 +17,14 @@
 
 <body>
 
-
     <header>
         <div class="seriously">
             <div class="header-space-left">
                 <p class="srs2">
-                
                 </p>
             </div>
             <div class="header-tophalf">
-            
+
                 <div class="header-toprow">
                     <div class="header-contact">
                         <img class="contact-icon" src="{{ url_for('static', filename='assets/phone-icon.png') }}"></img>
@@ -42,35 +39,30 @@
                     <div class="logo-background">
                         <div class="logo-positioner">
                         </div>
-                        <div class="logo-frame-bottom"> 
+                        <div class="logo-frame-bottom">
                         </div>
-                        
-                        <div class="logo-frame-top"> 
+                        <div class="logo-frame-top">
                         </div>
-                        <div> 
+                        <div>
                         </div>
                         <img class="febi-logo" src="{{ url_for('static', filename='assets/derpthe.png') }}">
                     </div>
 
-                    <div class="site-name"> 
+                    <div class="site-name">
                         <h1>
                             FREESTANDING EXERCISE BARS IRELAND
-
                         </h1>
                     </div>
                 </div>
-                
+
             </div>
             <div class="header-space-right">
                 <p class="srs2">
-                
                 </p>
             </div>
         </div>
-
         <div class="header-bannerrow">
             <img class="lower-header-banner" src="{{ url_for('static', filename='assets/Picture8b.png') }}">
-
         </div>
     </header>
 
@@ -78,43 +70,27 @@
         {% block content %}{% endblock %}
     </div>
 
-{#  #}
-{#  #}
-{# bottom contact banner #}
-
-<div class="end-banner">
-    {# <div> #}
-    <img class="enb-banner-img" src="{{ url_for('static', filename='assets/small-banner-man.png') }}" />
-    <div class="end-banner-info">
-        Contact FEBI on 087 1234567 or email something@febi.ie
+    <div class="end-banner">
+        <img class="enb-banner-img" src="{{ url_for('static', filename='assets/small-banner-man.png') }}" />
+        <div class="end-banner-info">
+            Contact FEBI on 087 1234567 or email something@febi.ie
+        </div>
+        <img class="enb-banner-img" src="{{ url_for('static', filename='assets/small-banner-man.png') }}" />
     </div>
-    <img class="enb-banner-img" src="{{ url_for('static', filename='assets/small-banner-man.png') }}" />
 
-</div>
+    <!--  -->
 
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-{# footer #}
-
-
-<footer>
-
-    <div class="footer-topics">
-        <div class="footer-products">
-            
+    <footer>
+        <div class="footer-topics">
+            <div class="footer-products">
                 <h3>Products</h3>
                 <lu>
                     <li>Zig-Zag</li>
                     <li>Family</li>
                     <li>Blah blah</li>
                 </lu>
-    
-        </div>
-        <div class="footer-contact">
-            
+            </div>
+            <div class="footer-contact">
                 <h3>Contact</h3>
                 <lu>
                     <li>tel: 087 1234 567</li>
@@ -122,62 +98,26 @@
                     <li>Facebook: www.facebook.com</li>
                     <li>Instagram: www.instagram.com</li>
                 </lu>
-
+            </div>
         </div>
-    </div>
-
-    <div class="copyright-statement">
-        <p>
-            (c) 2019 Freestanding Exercise Bars Ireland
-        </p>
-    </div>
-
-</footer>
-
-
-
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-    <!-- <div style="height: 200px">
-    </div> -->
-
+        <div class="copyright-statement">
+            <p>
+                (c) 2019 Freestanding Exercise Bars Ireland
+            </p>
+        </div>
+    </footer>
 
     <script>
-        allims = {{ productImages | tojson }}
-        console.log(allims)
-        const mainImgs = document.getElementsByClassName("product-main-img")
-
-        // pageWidth = getWidth()
-
-
-        // Set main image 1
-        mainImPath1 = "{{ url_for('static', filename='assets/product1/1-1.jpg') }}"
-        // mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-1.jpg') }}"
-        // Set main image 2
-        mainImPath2 = "{{ url_for('static', filename='assets/product2/1.jpg') }}"
-        // mainImgs[1].src = "{{ url_for('static', filename='assets/product2/1.jpg') }}"
-        // Set main image 3
-        // mainImgs[2].src = "{{ url_for('static', filename='assets/product3/a.jpg') }}"
-
-        
-        // function getWidth() {
-        //     return Math.max(
-        //       document.body.scrollWidth,
-        //       document.documentElement.scrollWidth,
-        //       document.body.offsetWidth,
-        //       document.documentElement.offsetWidth,
-        //       document.documentElement.clientWidth
-        //     );
-        //   }
-
-
+        // Product images are passed in by flask framework
+        PRODUCT_IMAGES = {
+            {
+                productImages | tojson
+            }
+        }
     </script>
     <script src="{{ url_for('static', filename='js/main-page.js') }}">
     </script>
-    
+
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script src="{{ url_for('static', filename='js/paypal-info.js') }}">
     </script>
