@@ -4,7 +4,7 @@
         folderSizes = ['120', '240', '360', '480', '600', '720', '840', '960']
 
         
-        // mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-1.png') }}"
+        // mainImgs[0].src = "{{ url_for('static', filename='assets/product1/1-1.jpg') }}"
         pageWidth = getWidth()
         mainImgs[0].src = whichImageForSize(mainImPath1, pageWidth)
         mainImgs[1].src = whichImageForSize(mainImPath2, pageWidth)
@@ -104,8 +104,8 @@
         }
 
         function whichImageForSize(path, imWidth){
-            // path example:    /path/img/1-1.png
-            // Wanted path:     /path/img/240/1-1.png
+            // path example:    /path/img/1-1.jpg
+            // Wanted path:     /path/img/240/1-1.jpg
             choosenSize = null;
             console.log("Fetching im for size: ", imWidth)
             for (let i=0; i<folderSizes.length; i++){
