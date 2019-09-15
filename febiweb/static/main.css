@@ -225,11 +225,6 @@ body {
     max-width: 100%;
 }
 
-.choice-card {
-    flex: 0 0 auto;
-    border: 1px solid green;
-    width: 23%;
-}
 
 .scroll-thumbnail {
     display: flex;
@@ -319,6 +314,7 @@ body {
     object-fit: cover;
     object-position: center;
     height: auto;
+    border: 1px solid black;
     width: 23%;
     padding: 3px;
 }

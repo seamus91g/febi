@@ -1,6 +1,6 @@
 
-
-        folderSizes = ['120', '240', '360', '480', '600', '720', '840', '960']
+        THUMBS_PRELOAD = 5
+        FOLDER_SIZES = ['120', '240', '360', '480', '600', '720', '840', '960']
         
         const mainImgs = document.getElementsByClassName("product-main-img")
         
@@ -20,49 +20,59 @@
             mainImgs[i].prodIndx = i
 
             // Set the thumbnails
-            setImages(i, mainImgs[i])
+            setImages(i, 0, THUMBS_PRELOAD)
         }
 
         // Set the thumbnails on a main image
-        function setImages(productIndex, mainim) {
+        function setImages(productIndex, start=0, end=null) {
             // Images for this specific product
             febImages = PRODUCT_IMAGES[productIndex]
             // Find the scroll bar for this product
             imgRow = elemByIndex(productIndex, "scroll-thumbnail")
-            let febiImg;
+            if (end == null){
+                end = febImages.length
+            }
+            let scrollImage;
+            console.log("Start, stop : ", start, ", ", end)
             // For each image, set a thumbnail of it
-            for (let step = 0; step < febImages.length; step++) {
-                // We create a new <img> tag to hold the thumbnail and add it to the scroll
-                febiImg = document.createElement('img');
-                febiImg.className = "thumb-image"
-                imgRow.appendChild(febiImg)
+            for (let step = start; step < end; step++) {
                 // Width of the page so we can load appropriate image sizes
                 pageWidth = getWidth()
                 imgWidth = pageWidth*0.23
-                // TODO: Do this after layout?? Saves time
-                febiImg.src = whichImageForSize(febImages[step], imgWidth)
-                console.log("Loaded: ", febiImg.src)
-                // If you click the thumbnail it moves to become the main image
-                febiImg.addEventListener('click', setImageMain)
+                // We create a new <img> tag to hold the thumbnail and add it to the scroll
+                thumbImage = whichImageForSize(febImages[step], imgWidth)
+                scrollImage = createImageForScrollbar(thumbImage, step)
                 // Info about thumbnail. Which product it belongs to and position in the scroll
-                febiImg.prodIndx = productIndex
-                febiImg.imageIndx = step
+                scrollImage.prodIndx = productIndex
+                scrollImage.imageIndx = step
+                imgRow.appendChild(scrollImage)
+
             }
         }
 
-        
-        window.addEventListener("load", function(){
-            imgRow = elemByIndex(0, "scroll-thumbnail")
-            imchildrn = imgRow.childNodes;
-            console.log("main size: ", mainImgs[0].width)
-            console.log("number thumbs: ", imchildrn.length)
-            for (let step = 0; step < imchildrn.length; step++) {
-                chcwidth = imchildrn[step].clientWidth
-                chwidth = imchildrn[step].width
-                console.log("Ch width:", chwidth)
-                console.log("Ch client width:", chcwidth)
-            }
+        // We create a new <img> tag to hold the thumbnail and add it to the scroll
+        function createImageForScrollbar(thumbImage){
+            scrollImage = document.createElement('img');
+            scrollImage.className = "thumb-image"
+            // TODO: Do this after layout?? Saves time
+            scrollImage.src = thumbImage
+            console.log("Loaded: ", scrollImage.src)
+            // If you click the thumbnail it moves to become the main image
+            scrollImage.addEventListener('click', setImageMain)
+            return scrollImage
+        }
 
+        // Leave loading most thumbnails until after rest of page is loaded
+        window.addEventListener("load", function(){
+            // imgRow = elemByIndex(0, "scroll-thumbnail")
+            // imchildrn = imgRow.childNodes;
+            // for (let step = 0; step < imchildrn.length; step++) {
+            //     console.log("Ch client width:", imchildrn[step].width)
+            // }
+            for (var i=0; i<mainImgs.length; i++){
+                // Set the thumbnails
+                setImages(i, THUMBS_PRELOAD)
+            }
         });
 
         // Get the width of the screen
@@ -125,8 +135,8 @@
         //      return:      /path/img/240/1-1.jpg
         function whichImageForSize(path, imWidth){
             choosenSize = null;
-            for (let i=0; i<folderSizes.length; i++){
-                thisSize = parseInt(folderSizes[i])
+            for (let i=0; i<FOLDER_SIZES.length; i++){
+                thisSize = parseInt(FOLDER_SIZES[i])
                 if (thisSize > imWidth){
                     return smallPathFromFull(path, thisSize)
                 }
