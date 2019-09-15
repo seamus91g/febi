@@ -1,11 +1,13 @@
 
         FOLDER_SIZES = ['120', '240', '360', '480', '600', '720', '840', '960']
-        THUMB_SCALE_BELOW_PX = 600
-        THUMB_WIDTH_DESKTOP = 0.23
-        THUMB_WIDTH_MOBILE = 0.3
+        THUMB_SCALE_BELOW_PX = 600  // Display fewer thumbnails on smaller devices
+        THUMB_WIDTH_DESKTOP = 0.23  // % thumbnail width of screen desktop
+        THUMB_WIDTH_MOBILE = 0.3    // % thumbnail width of screen mobile
         DENSITY_FACTOR = window.devicePixelRatio
-        THUMBS_PRELOAD = 5
+        THUMBS_PRELOAD = 5          // Number of thumbnails to load at start
         PAGE_WIDTH = getWidth()
+        MAX_IMG_HEIGHT = 540        // Main product image can't be higher than this
+        HW_RATIOS = [0.56, 0.56, 1.31]
 
         if (PAGE_WIDTH < THUMB_SCALE_BELOW_PX){
             THUMBS_PRELOAD -= 1
@@ -17,7 +19,7 @@
         const mainImgs = document.getElementsByClassName("product-main-img")
         
         for (let i=0; i<mainImgs.length; i++){
-            mainImgs[i].src = whichImageForSize(PRODUCT_IMAGES[i][0], PAGE_WIDTH)
+            mainImgs[i].src = whichImageForSize(PRODUCT_IMAGES[i][0], PAGE_WIDTH, HW_RATIOS[i])
         }
 
         // For each main image set click listeners on the left and right of the image
@@ -101,7 +103,7 @@
             // Get full size image for the thumbnail
             pathToBigSize = fullImPathFromSmall(evt.target.currentSrc)
             // Get an appropriate size for the full image
-            appropriateSize = whichImageForSize(pathToBigSize, getWidth())
+            appropriateSize = whichImageForSize(pathToBigSize, getWidth(), HW_RATIOS[evt.target.prodIndx])
             // Replace main image with the newly decided image
             mainImgs[evt.target.prodIndx].src = appropriateSize;
             // Update the main <img> tag with index of which image it is
@@ -140,9 +142,15 @@
 
         // Return an image of next highest width for the input width
         // example:
-        //      input:       /path/img/1-1.jpg, 207
-        //      return:      /path/img/240/1-1.jpg
-        function whichImageForSize(path, imWidth){
+        //      input:       /path/product1/1-1.jpg, 207
+        //      return:      /path/product1/240/1-1.jpg
+        function whichImageForSize(path, imWidth, hwRatio=1){
+            // Scale the width down if height would exceed max
+            if (hwRatio > 1){
+                if(imWidth*hwRatio > MAX_IMG_HEIGHT){
+                    imWidth = MAX_IMG_HEIGHT/hwRatio
+                }
+            }
             // The widths are calculated independent of pixel density so we must factor it in
             // Mobiles tend to have pixel density of 2, desktops typically are 1
             imWidth = imWidth*DENSITY_FACTOR
@@ -150,6 +158,7 @@
             for (let i=0; i<FOLDER_SIZES.length; i++){
                 thisSize = parseInt(FOLDER_SIZES[i])
                 if (thisSize > imWidth){
+
                     return smallPathFromFull(path, thisSize)
                 }
             }
