@@ -17,10 +17,6 @@
         // Check cache for image before loading 
 
         const mainImgs = document.getElementsByClassName("product-main-img")
-        
-        for (let i=0; i<mainImgs.length; i++){
-            mainImgs[i].src = whichImageForSize(PRODUCT_IMAGES[i][0], PAGE_WIDTH, HW_RATIOS[i])
-        }
 
         // For each main image set click listeners on the left and right of the image
         // Load up the thumbnails of each
@@ -31,7 +27,9 @@
             mainImgs[i].imageIndx = 0
             // Which product number is this
             mainImgs[i].prodIndx = i
-
+            
+            // Set the main image
+            mainImgs[i].src = whichImageForSize(PRODUCT_IMAGES[i][0], PAGE_WIDTH, HW_RATIOS[i])
             // Set the thumbnails
             setImages(i, 0, THUMBS_PRELOAD)
         }
