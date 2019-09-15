@@ -11,6 +11,9 @@
             THUMBS_PRELOAD -= 1
         }
 
+        // TODO: Create cache of Image() objects. Load 'next' image before requested
+        // Check cache for image before loading 
+
         const mainImgs = document.getElementsByClassName("product-main-img")
         
         for (let i=0; i<mainImgs.length; i++){
