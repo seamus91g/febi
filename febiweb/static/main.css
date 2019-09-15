@@ -81,7 +81,7 @@ body {
 .contact-icon {
     height: auto;
     width: 2vw;
-    margin-left: 3vw;
+    margin-left: 2vw;
 }
 
 .header-toprow {
@@ -336,14 +336,16 @@ body {
     /* border: 1px solid black; */
     align-items: center;
     background: #E3C680;
-    justify-content: space-around;
+    justify-content: center;
 
 }
 
 .end-banner-info {
     /* border: 1px solid black; */
     padding: 1.5vw;
-    font-size: 2.5vw;
+    font-size: 2em;
+    text-align: center;
+    max-width: 80%;
 }
 
 .enb-banner-img {
@@ -361,6 +363,12 @@ body {
         width: 4vw;
     }
 
+    .end-banner-info {
+        /* border: 1px solid black; */
+        padding: 1.5vw;
+        font-size: 1.5em;
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -369,6 +377,13 @@ body {
         /* border: 1px solid black; */
         height: auto;
         width: 5vw;
+    }
+
+    .end-banner-info {
+        /* border: 1px solid black; */
+        padding: 1.5vw;
+        font-size: 1em;
+        text-align: center;
     }
 
 }
@@ -401,6 +416,10 @@ footer {
     /* border: 1px solid black; */
     color: white;
 
+}
+
+.contact-info{
+    font-weight: bold;
 }
 
 .copyright-statement {
