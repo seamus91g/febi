@@ -109,11 +109,7 @@
 
     <script>
         // Product images are passed in by flask framework
-        PRODUCT_IMAGES = {
-            {
-                productImages | tojson
-            }
-        }
+        PRODUCT_IMAGES = {{ productImages | tojson }}
     </script>
     <script src="{{ url_for('static', filename='js/main-page.js') }}">
     </script>
