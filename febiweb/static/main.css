@@ -314,7 +314,7 @@ body {
     object-fit: cover;
     object-position: center;
     height: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 23%;
     padding: 3px;
 }

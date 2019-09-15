@@ -1,12 +1,20 @@
 
-        THUMBS_PRELOAD = 5
         FOLDER_SIZES = ['120', '240', '360', '480', '600', '720', '840', '960']
-        
+        THUMB_SCALE_BELOW_PX = 600
+        THUMB_WIDTH_DESKTOP = 0.23
+        THUMB_WIDTH_MOBILE = 0.3
+        DENSITY_FACTOR = window.devicePixelRatio
+        THUMBS_PRELOAD = 5
+        PAGE_WIDTH = getWidth()
+
+        if (PAGE_WIDTH < THUMB_SCALE_BELOW_PX){
+            THUMBS_PRELOAD -= 1
+        }
+
         const mainImgs = document.getElementsByClassName("product-main-img")
         
-        pageWidth = getWidth()
         for (let i=0; i<mainImgs.length; i++){
-            mainImgs[i].src = PRODUCT_IMAGES[i][0]
+            mainImgs[i].src = whichImageForSize(PRODUCT_IMAGES[i][0], PAGE_WIDTH)
         }
 
         // For each main image set click listeners on the left and right of the image
@@ -37,8 +45,11 @@
             // For each image, set a thumbnail of it
             for (let step = start; step < end; step++) {
                 // Width of the page so we can load appropriate image sizes
-                pageWidth = getWidth()
-                imgWidth = pageWidth*0.23
+                scaleFactor = THUMB_WIDTH_DESKTOP
+                if (PAGE_WIDTH < THUMB_SCALE_BELOW_PX){
+                    scaleFactor = THUMB_WIDTH_MOBILE
+                }
+                imgWidth = PAGE_WIDTH*scaleFactor
                 // We create a new <img> tag to hold the thumbnail and add it to the scroll
                 thumbImage = whichImageForSize(febImages[step], imgWidth)
                 scrollImage = createImageForScrollbar(thumbImage, step)
@@ -64,11 +75,6 @@
 
         // Leave loading most thumbnails until after rest of page is loaded
         window.addEventListener("load", function(){
-            // imgRow = elemByIndex(0, "scroll-thumbnail")
-            // imchildrn = imgRow.childNodes;
-            // for (let step = 0; step < imchildrn.length; step++) {
-            //     console.log("Ch client width:", imchildrn[step].width)
-            // }
             for (var i=0; i<mainImgs.length; i++){
                 // Set the thumbnails
                 setImages(i, THUMBS_PRELOAD)
@@ -134,6 +140,9 @@
         //      input:       /path/img/1-1.jpg, 207
         //      return:      /path/img/240/1-1.jpg
         function whichImageForSize(path, imWidth){
+            // The widths are calculated independent of pixel density so we must factor it in
+            // Mobiles tend to have pixel density of 2, desktops typically are 1
+            imWidth = imWidth*DENSITY_FACTOR
             choosenSize = null;
             for (let i=0; i<FOLDER_SIZES.length; i++){
                 thisSize = parseInt(FOLDER_SIZES[i])
