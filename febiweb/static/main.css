@@ -228,6 +228,8 @@ body {
     margin-top: 1vw;
     margin-bottom: 1vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* Prevent double click from highlighting the element */
+    user-select: none;
 }
 
 .product-main-img {
@@ -235,8 +237,35 @@ body {
     display: flex;
     max-height: 540px;
     max-width: 100%;
+    /* This treats a click on the image as 
+    if it was a click on the parent element. 
+    This means we can have right/left click arrows 
+    in the same place even if image is narrow */
+    pointer-events: none;
 }
 
+.main-img-container{
+    position: relative;
+}
+
+.image-arrow {
+    width: 3%;
+    height: auto;
+    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    padding: 10px;
+}
+
+.left-arrow{
+    left: 5%;
+}
+
+.right-arrow{
+    right: 5%;
+}
 
 .scroll-thumbnail {
     display: flex;

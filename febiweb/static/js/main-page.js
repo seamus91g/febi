@@ -17,12 +17,13 @@
         // Check cache for image before loading 
 
         const mainImgs = document.getElementsByClassName("product-main-img")
+        const chevrons = document.getElementsByClassName("image-arrow")
 
         // For each main image set click listeners on the left and right of the image
         // Load up the thumbnails of each
         for (var i=0; i<mainImgs.length; i++){
             // This click listener is independent of what img src is in the img tag
-            mainImgs[i].addEventListener('click', clickPrevNext)
+            mainImgs[i].parentElement.addEventListener('click', clickPrevNext)
             // Store the index so we know what image is next/previous
             mainImgs[i].imageIndx = 0
             // Which product number is this
@@ -32,6 +33,14 @@
             mainImgs[i].src = whichImageForSize(PRODUCT_IMAGES[i][0], PAGE_WIDTH, HW_RATIOS[i])
             // Set the thumbnails
             setImages(i, 0, THUMBS_PRELOAD)
+
+            // We set a background color on the left/right arrow when waiting for 
+            // the next image to load. Remove this background once loaded
+            mainImgs[i].addEventListener("load", function(evt){
+                arrowIndex = (evt.target.prodIndx + 1) * 2  - 1
+                chevrons[arrowIndex].style = "background: none"
+                chevrons[arrowIndex-1].style = "background: none"
+            });
         }
 
         // Set the thumbnails on a main image
@@ -44,7 +53,6 @@
                 end = febImages.length
             }
             let scrollImage;
-            console.log("Start, stop : ", start, ", ", end)
             // For each image, set a thumbnail of it
             for (let step = start; step < end; step++) {
                 // Width of the page so we can load appropriate image sizes
@@ -97,7 +105,6 @@
 
         // Set the clicked thumnnail to be the main image
         function setImageMain(evt) {
-            console.log("Main size: ", mainImgs[evt.target.prodIndx].clientWidth)
             // Get full size image for the thumbnail
             pathToBigSize = fullImPathFromSmall(evt.target.currentSrc)
             // Get an appropriate size for the full image
@@ -156,7 +163,6 @@
             for (let i=0; i<FOLDER_SIZES.length; i++){
                 thisSize = parseInt(FOLDER_SIZES[i])
                 if (thisSize > imWidth){
-
                     return smallPathFromFull(path, thisSize)
                 }
             }
@@ -167,7 +173,6 @@
         function makeRelPath(pathArray){
             newPathArray = []
             for (let x=pathArray.length -1; x != 0; x--){
-
                 newPathArray.unshift(pathArray[x])
                 if (pathArray[x] == 'static'){
                     newPathArray.unshift('..')
@@ -188,27 +193,47 @@
         // Move either left or right by 1 image based on where the user has clicked
         // Click on the left 1/3 to move to the left, and vice versa
         function clickPrevNext(evt){
-            thisProdImages = PRODUCT_IMAGES[evt.target.prodIndx]
-            thisThumbnailIndex = evt.target.imageIndx
-            imglen = evt.target.width;
+            containerWidth = evt.target.clientWidth;
+            // We register the click on the parent div. Thus we must find the 
+            // image within this div
+            prodMainImage = findChildMatching(evt.target, "product-main-img")
+            thisProdImages = PRODUCT_IMAGES[prodMainImage.prodIndx]
             
-            xLocation = evt.clientX;
+            // Find which image arrows apply to this image
+            arrowIndex = (prodMainImage.prodIndx + 1) * 2  - 1
+            // Subtract width of the side border
+            xLocation = evt.clientX - (getWidth() - containerWidth)/2;
+            
             nextIndex = null;
-            if (xLocation < imglen / 3){
-                nextIndex = thisThumbnailIndex - 1
+            // If clicked left, move to next image to the left
+            if (xLocation < containerWidth / 3){
+                nextIndex = prodMainImage.imageIndx - 1
                 if (nextIndex < 0) {
                     nextIndex = nextIndex + thisProdImages.length
                 } 
-            } else if (xLocation > 2 * imglen / 3) {
-                nextIndex = (thisThumbnailIndex + 1) % thisProdImages.length
+                chevrons[arrowIndex-1].style = "background-color:rgba(0, 204, 255, 0.5)"
+                // If clicker right, move to next image to the right
+            } else if (xLocation > 2 * containerWidth / 3) {
+                nextIndex = (prodMainImage.imageIndx + 1) % thisProdImages.length
+                chevrons[arrowIndex].style = "background-color:rgba(0, 204, 255, 0.5)"
             }
+            // Load whichever image we decided on
             if (nextIndex != null){
-                evt.target.imageIndx = nextIndex
-                evt.target.src = thisProdImages[nextIndex]
-
+                prodMainImage.imageIndx = nextIndex
+                prodMainImage.src = thisProdImages[nextIndex]
             } 
         }
 
+        // Find a child node with a particular class name
+        function findChildMatching(element, clsName){
+            var nodeList = element.childNodes;
+            for (let i=0; i<nodeList.length; i++){
+                if (nodeList[i].className == clsName) {
+                    return nodeList[i]
+                }
+            }
+        }
+        
         // Return the nth element which matches given class name
         function elemByIndex(indx, clsName){
             choiceBlocks = document.getElementsByClassName(clsName);
@@ -216,7 +241,6 @@
         }
 
 
-        
         // let startIndex = [0, 0]
         // function rotateImages(evt) {
         //     imgindx = evt.target.imageIndex

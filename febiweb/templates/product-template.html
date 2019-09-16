@@ -1,6 +1,10 @@
 <div class="product-container">
-    <!-- This img is populated by javascript -->
-    <img class="product-main-img" />
+    <div class="main-img-container">
+        <img class="image-arrow left-arrow" src="{{ url_for('static', filename='assets/leftchevron.png') }}" />
+        <img class="image-arrow right-arrow" src="{{ url_for('static', filename='assets/rightchevron.png') }}" />
+        <!-- This img is populated by javascript -->
+        <img class="product-main-img" />
+    </div>
 
     <div class="scroll-thumbnail">
         <!-- This gets populated in Javascript -->
